@@ -13,7 +13,7 @@ dependencies = [
     "torch>=2.1",
     "torch_geometric>=2.5.0",
     "rdkit",
-    "numpy>=1.24.3",
+    "numpy",
     "xgboost>=1.6",
 ]
 
