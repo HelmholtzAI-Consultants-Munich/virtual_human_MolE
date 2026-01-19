@@ -1,0 +1,25 @@
+[project]
+name = "mole-package"
+version = "0.1.2"
+description = "Package for MolE transformer with necessary functions"
+authors = [{ name="Maksim Pavlov", email="maksim.pavlov@helmholtz-munich.de"}]
+readme = "README.md"
+requires-python = ">=3.9,<3.12"
+
+dependencies = [
+    "pyyaml>=6.0.1",
+    "pandas>=2.1",
+    "huggingface-hub>=0.20",
+    "torch>=2.1",
+    "torch_geometric>=2.5.0",
+    "rdkit",
+    "numpy>=1.24.3",
+    "xgboost>=1.6",
+]
+
+[project.urls]
+Homepage = "https://github.com/rolayoalarcon/MolE"
+
+[build-system]
+requires = ["setuptools>=61.0"]
+build-backend = "setuptools.build_meta"
