@@ -12,7 +12,6 @@ num_chirality_tag = 3
 num_bond_type = 5 # including aromatic and self-loop edge
 num_bond_direction = 3 
 
-
 class GINEConv(MessagePassing):
     def __init__(self, emb_dim):
         super(GINEConv, self).__init__()
@@ -48,9 +47,7 @@ class GINEConv(MessagePassing):
     def update(self, aggr_out):
         return self.mlp(aggr_out)
 
-
-class GINet(nn.Module):
-   
+class GINet(nn.Module):  
     """
     GIN encoder from MolE.
 
@@ -113,6 +110,7 @@ class GINet(nn.Module):
 
             nn.Linear(self.feat_dim, self.feat_dim)
         )
+        
     def forward(self, data):
         x = data.x
         edge_index = data.edge_index
