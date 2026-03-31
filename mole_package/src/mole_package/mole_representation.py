@@ -4,7 +4,6 @@ import os
 
 # A FUNCTION TO READ SMILES from file 
 def read_smiles_df(data_path, smile_col="rdkit_no_salt", id_col="prestwick_ID"):
-
     """
     Read SMILES data from a file and remove invalid SMILES.
 
@@ -33,7 +32,6 @@ def read_smiles_df(data_path, smile_col="rdkit_no_salt", id_col="prestwick_ID"):
     return smile_df
 
 def read_smiles(data_path):
-
     """
     Read SMILES data from a file and remove invalid SMILES.
 
@@ -45,24 +43,19 @@ def read_smiles(data_path):
     Returns:
     - smile_df (pandas.DataFrame): DataFrame containing SMILES data with specified columns.
     """
-    
-    # Read the data
     if not os.path.exists(data_path):
         raise FileNotFoundError(f"Could not find file: {data_path}")
 
     with open(data_path, 'r') as f:
-        # Read lines, strip whitespace, and split to handle optional IDs
-        # (e.g., 'CN1C=NC2=C1C(=O)N(C(=O)N2C)C caffeine')
         smiles_list = [line.strip().split()[0] for line in f if line.strip()]
 
-    # Convert to Mol objects
-    # Note: Invalid SMILES will result in None in this list
-    mols = [Chem.MolFromSmiles(s) for s in smiles_list]
-    
-    # Optional: Filter out Nones if you only want valid molecules
-    mols = [m for m in mols if m is not None]
-    
-    return mols
+    # Validate but KEEP strings
+    valid_smiles = []
+    for s in smiles_list:
+        if Chem.MolFromSmiles(s) is not None:
+            valid_smiles.append(s)
+
+    return valid_smiles
 
 if __name__ == "__main__":
     print(read_smiles("mole_package/sequences.smiles"))
