@@ -127,3 +127,8 @@ def batch_representation(
 
     chem_representation = torch.cat(batch_representations, dim=0)
     return chem_representation, chem_ids_all
+
+if __name__ == "__main__":
+    emb, ids = batch_representation("sequences.smiles")
+    print(emb)
+    print(ids)
