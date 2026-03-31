@@ -65,7 +65,7 @@ def read_smiles(data_path):
     return mols
 
 if __name__ == "__main__":
-    print(read_smiles("sequences.smiles"))
+    print(read_smiles("mole_package/sequences.smiles"))
 
 
     
